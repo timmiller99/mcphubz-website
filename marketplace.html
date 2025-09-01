@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - MCPHubz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MCPHubz Marketplace - Buy, sell, and discover custom Model Context Protocol implementations and services.">
+    <meta name="keywords" content="Model Context Protocol, MCP, AI context, MCP marketplace, MCP implementations, AI integration services">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MCPHubz</h1>
+                <p>The Model Context Protocol Authority</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="marketplace.html" class="active">Marketplace</a></li>
+                    <li><a href="consulting.html">Consulting</a></li>
+                    <li><a href="api.html">API</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="account.html" class="btn btn-small">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>MCP Marketplace</h1>
+            <p>Buy, sell, and discover custom Model Context Protocol implementations and services</p>
+        </div>
+    </section>
+    
+    <section class="marketplace-controls">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search marketplace...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="implementations">Implementations</button>
+                    <button class="filter-btn" data-filter="services">Services</button>
+                    <button class="filter-btn" data-filter="tools">Tools</button>
+                    <button class="filter-btn" data-filter="templates">Templates</button>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <button class="filter-btn" data-filter="free">Free</button>
+                    <button class="filter-btn" data-filter="under-100">Under $100</button>
+                    <button class="filter-btn" data-filter="100-500">$100-$500</button>
+                    <button class="filter-btn" data-filter="over-500">Over $500</button>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Rating</h3>
+                    <button class="filter-btn" data-filter="5-star">5 Stars</button>
+                    <button class="filter-btn" data-filter="4-star">4+ Stars</button>
+                    <button class="filter-btn" data-filter="3-star">3+ Stars</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-listings">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Listings</h2>
+                <p>Top-rated MCP implementations and services</p>
+            </div>
+            
+            <div class="marketplace-grid">
+                <div class="marketplace-item filterable-item implementations 5-star over-500">
+                    <div class="item-header">
+                        <h3>Enterprise Filesystem MCP</h3>
+                        <span class="price">$499</span>
+                    </div>
+                    <p>Enhanced filesystem MCP with advanced security features and enterprise support</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> MCPSolutions Inc.</span>
+                        <span><i class="fas fa-star"></i> 4.8/5 (24 reviews)</span>
+                    </div>
+                    <div class="item-features">
+                        <span class="feature"><i class="fas fa-check"></i> Advanced access controls</span>
+                        <span class="feature"><i class="fas fa-check"></i> Encryption support</span>
+                        <span class="feature"><i class="fas fa-check"></i> Enterprise support</span>
+                    </div>
+                    <a href="marketplace-item.html?id=enterprise-filesystem" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item implementations 4-star 100-500">
+                    <div class="item-header">
+                        <h3>Custom CRM Integration</h3>
+                        <span class="price">$799</span>
+                    </div>
+                    <p>Connect your CRM system to Claude and other LLMs with this custom MCP server</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> AI Integration Experts</span>
+                        <span><i class="fas fa-star"></i> 4.9/5 (17 reviews)</span>
+                    </div>
+                    <div class="item-features">
+                        <span class="feature"><i class="fas fa-check"></i> Salesforce, HubSpot, Zoho support</span>
+                        <span class="feature"><i class="fas fa-check"></i> Bi-directional sync</span>
+                        <span class="feature"><i class="fas fa-check"></i> Custom field mapping</span>
+                    </div>
+                    <a href="marketplace-item.html?id=crm-integration" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item services 5-star over-500">
+                    <div class="item-header">
+                        <h3>MCP Implementation Service</h3>
+                        <span class="price">From $1,500</span>
+                    </div>
+                    <p>Custom MCP server development and integration services for your specific needs</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> MCP Consulting Group</span>
+                        <span><i class="fas fa-star"></i> 5.0/5 (12 reviews)</span>
+                    </div>
+                    <div class="item-features">
+                        <span class="feature"><i class="fas fa-check"></i> Custom development</span>
+                        <span class="feature"><i class="fas fa-check"></i> Integration with existing systems</span>
+                        <span class="feature"><i class="fas fa-check"></i> Training and documentation</span>
+                    </div>
+                    <a href="marketplace-item.html?id=implementation-service" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="sell-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>Sell Your MCP Implementations</h2>
+                <p>Join our marketplace to reach thousands of developers looking for quality MCP solutions.</p>
+                <div class="banner-features">
+                    <div class="feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Reach</h3>
+                        <p>Connect with MCP developers worldwide</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Fair Commission</h3>
+                        <p>Just 10-15% commission on sales</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tools"></i>
+                        <h3>Seller Tools</h3>
+                        <p>Analytics and marketing support</p>
+                    </div>
+                </div>
+                <a href="account.html?action=become-seller" class="btn btn-large">Become a Seller</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="all-listings">
+        <div class="container">
+            <div class="section-header">
+                <h2>All Marketplace Listings</h2>
+                <p>Browse all available MCP implementations and services</p>
+            </div>
+            
+            <div class="marketplace-grid">
+                <div class="marketplace-item filterable-item implementations 4-star under-100">
+                    <div class="item-header">
+                        <h3>Enhanced Memory MCP</h3>
+                        <span class="price">$89</span>
+                    </div>
+                    <p>Improved memory MCP with advanced knowledge graph capabilities</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> AI Memory Systems</span>
+                        <span><i class="fas fa-star"></i> 4.6/5 (15 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=enhanced-memory" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item tools 4-star under-100">
+                    <div class="item-header">
+                        <h3>MCP Testing Framework</h3>
+                        <span class="price">$49</span>
+                    </div>
+                    <p>Comprehensive testing framework for MCP server development</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> TestMCP</span>
+                        <span><i class="fas fa-star"></i> 4.7/5 (21 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=testing-framework" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item implementations 3-star under-100">
+                    <div class="item-header">
+                        <h3>Notion MCP Server</h3>
+                        <span class="price">$79</span>
+                    </div>
+                    <p>Connect Claude and other LLMs to your Notion workspace</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> NotionAI Integrations</span>
+                        <span><i class="fas fa-star"></i> 4.2/5 (18 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=notion-server" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item templates free">
+                    <div class="item-header">
+                        <h3>MCP Server Starter Kit</h3>
+                        <span class="price">Free</span>
+                    </div>
+                    <p>Boilerplate code and templates for creating new MCP servers</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> MCP Community</span>
+                        <span><i class="fas fa-star"></i> 4.5/5 (32 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=starter-kit" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item services 5-star 100-500">
+                    <div class="item-header">
+                        <h3>MCP Training Workshop</h3>
+                        <span class="price">$299</span>
+                    </div>
+                    <p>Live online workshop for teams learning MCP development</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> MCP Academy</span>
+                        <span><i class="fas fa-star"></i> 4.9/5 (27 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=training-workshop" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item implementations 4-star 100-500">
+                    <div class="item-header">
+                        <h3>Enterprise Database MCP</h3>
+                        <span class="price">$199</span>
+                    </div>
+                    <p>Secure database MCP with support for multiple database systems</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> DataMCP Solutions</span>
+                        <span><i class="fas fa-star"></i> 4.4/5 (19 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=enterprise-database" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item tools 3-star under-100">
+                    <div class="item-header">
+                        <h3>MCP Performance Monitor</h3>
+                        <span class="price">$39</span>
+                    </div>
+                    <p>Tool for monitoring and optimizing MCP server performance</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> OptimizeMCP</span>
+                        <span><i class="fas fa-star"></i> 4.1/5 (14 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=performance-monitor" class="btn">View Details</a>
+                </div>
+                
+                <div class="marketplace-item filterable-item services 4-star 100-500">
+                    <div class="item-header">
+                        <h3>MCP Code Review</h3>
+                        <span class="price">$149</span>
+                    </div>
+                    <p>Expert review of your MCP server implementation with recommendations</p>
+                    <div class="item-meta">
+                        <span><i class="fas fa-user"></i> MCP Experts</span>
+                        <span><i class="fas fa-star"></i> 4.8/5 (22 reviews)</span>
+                    </div>
+                    <a href="marketplace-item.html?id=code-review" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" class="next">Next &raquo;</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="marketplace-faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Marketplace FAQ</h2>
+                <p>Common questions about buying and selling on the MCPHubz Marketplace</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How do I purchase an item?</h3>
+                    <p>To purchase an item, simply click the "View Details" button on any listing, then click "Purchase" on the item page. You'll need to create an account if you don't already have one.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What payment methods are accepted?</h3>
+                    <p>We accept credit/debit cards, PayPal, and cryptocurrency payments including Bitcoin and Ethereum.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How do I become a seller?</h3>
+                    <p>To become a seller, create an account, then click "Become a Seller" in your account dashboard. You'll need to provide some additional information and agree to our seller terms.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What commission does MCPHubz take?</h3>
+                    <p>MCPHubz takes a 10-15% commission on sales, depending on the seller's volume and history. The exact commission rate will be displayed in your seller dashboard.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How are payments processed?</h3>
+                    <p>Payments are held in escrow for 14 days to ensure buyer satisfaction, then released to the seller. Sellers can withdraw funds via bank transfer, PayPal, or cryptocurrency.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What if I'm not satisfied with my purchase?</h3>
+                    <p>We offer a 30-day satisfaction guarantee. If you're not satisfied with your purchase, contact our support team at <a href="mailto:support@mcphubz.com">support@mcphubz.com</a> for assistance with returns or refunds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest marketplace listings and MCP news.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>MCPHubz</h2>
+                    <p>The Model Context Protocol Authority</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Map</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="guides.html">Guides</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="consulting.html">Consulting</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io" target="_blank">Official MCP Site</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol" target="_blank">GitHub Organization</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers" target="_blank">Official Servers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCPHubz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

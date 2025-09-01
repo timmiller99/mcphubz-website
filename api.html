@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Access - MCPHubz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MCPHubz API - Access our comprehensive MCP server directory and resources programmatically through our API.">
+    <meta name="keywords" content="Model Context Protocol, MCP, API, MCP API, AI context, AI integration">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MCPHubz</h1>
+                <p>The Model Context Protocol Authority</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="consulting.html">Consulting</a></li>
+                    <li><a href="api.html" class="active">API</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="account.html" class="btn btn-small">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>MCPHubz API</h1>
+            <p>Access our comprehensive MCP server directory and resources programmatically</p>
+        </div>
+    </section>
+    
+    <section class="api-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>API Overview</h2>
+                <p>Integrate MCPHubz data and functionality into your applications</p>
+            </div>
+            
+            <div class="api-features">
+                <div class="feature">
+                    <i class="fas fa-server"></i>
+                    <h3>Server Directory</h3>
+                    <p>Access our comprehensive directory of MCP servers with detailed metadata</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-search"></i>
+                    <h3>Search & Filter</h3>
+                    <p>Powerful search and filtering capabilities for finding specific MCP servers</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-code"></i>
+                    <h3>SDK Integration</h3>
+                    <p>Easily integrate with our API using our client SDKs for various languages</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics</h3>
+                    <p>Access usage statistics and popularity metrics for MCP servers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="api-pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>API Pricing Plans</h2>
+                <p>Choose the plan that fits your needs</p>
+            </div>
+            
+            <div class="api-tiers">
+                <div class="api-tier">
+                    <h3>Basic</h3>
+                    <p class="price">Free</p>
+                    <ul>
+                        <li>100 requests/day</li>
+                        <li>Basic server information</li>
+                        <li>Public resources access</li>
+                        <li>Rate limited</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="account.html?action=api-basic" class="btn">Get Started</a>
+                </div>
+                
+                <div class="api-tier featured">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Professional</h3>
+                    <p class="price">$99/month</p>
+                    <ul>
+                        <li>10,000 requests/day</li>
+                        <li>Full server details</li>
+                        <li>Search and filtering</li>
+                        <li>Analytics access</li>
+                        <li>Email support</li>
+                        <li>No attribution required</li>
+                    </ul>
+                    <a href="account.html?action=api-professional" class="btn">Upgrade</a>
+                </div>
+                
+                <div class="api-tier">
+                    <h3>Enterprise</h3>
+                    <p class="price">$499/month</p>
+                    <ul>
+                        <li>Unlimited requests</li>
+                        <li>Priority support</li>
+                        <li>Custom endpoints</li>
+                        <li>Dedicated resources</li>
+                        <li>SLA guarantees</li>
+                        <li>White-label option</li>
+                    </ul>
+                    <a href="contact.html?subject=Enterprise-API" class="btn">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="api-documentation">
+        <div class="container">
+            <div class="section-header">
+                <h2>API Documentation</h2>
+                <p>Comprehensive documentation to help you integrate with our API</p>
+            </div>
+            
+            <div class="documentation-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="getting-started">Getting Started</button>
+                    <button class="tab-btn" data-tab="authentication">Authentication</button>
+                    <button class="tab-btn" data-tab="endpoints">Endpoints</button>
+                    <button class="tab-btn" data-tab="examples">Examples</button>
+                    <button class="tab-btn" data-tab="sdks">SDKs</button>
+                </div>
+                
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="getting-started">
+                        <h3>Getting Started with MCPHubz API</h3>
+                        <p>Follow these steps to start using the MCPHubz API:</p>
+                        
+                        <ol class="steps">
+                            <li>
+                                <h4>Create an Account</h4>
+                                <p>Sign up for a MCPHubz account if you don't already have one.</p>
+                            </li>
+                            <li>
+                                <h4>Generate API Key</h4>
+                                <p>Navigate to your account settings and generate an API key.</p>
+                            </li>
+                            <li>
+                                <h4>Choose a Plan</h4>
+                                <p>Select the API plan that fits your needs.</p>
+                            </li>
+                            <li>
+                                <h4>Make Your First Request</h4>
+                                <p>Use your API key to make your first request to our API.</p>
+                            </li>
+                        </ol>
+                        
+                        <div class="code-example">
+                            <pre><code>curl -X GET "https://api.mcphubz.com/v1/servers" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="authentication">
+                        <h3>Authentication</h3>
+                        <p>All API requests require authentication using an API key. You can generate an API key in your account settings.</p>
+                        
+                        <h4>API Key Authentication</h4>
+                        <p>Include your API key in the Authorization header of your requests:</p>
+                        
+                        <div class="code-example">
+                            <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                        </div>
+                        
+                        <h4>Rate Limiting</h4>
+                        <p>Rate limits vary based on your plan:</p>
+                        <ul>
+                            <li>Basic: 100 requests per day</li>
+                            <li>Professional: 10,000 requests per day</li>
+                            <li>Enterprise: Unlimited requests</li>
+                        </ul>
+                        
+                        <p>Rate limit information is included in the response headers:</p>
+                        <div class="code-example">
+                            <pre><code>X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1616172800</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="endpoints">
+                        <h3>API Endpoints</h3>
+                        
+                        <div class="endpoint">
+                            <h4>List Servers</h4>
+                            <p><code>GET /v1/servers</code></p>
+                            <p>Returns a list of MCP servers with basic information.</p>
+                            
+                            <h5>Query Parameters</h5>
+                            <ul>
+                                <li><code>page</code> - Page number (default: 1)</li>
+                                <li><code>limit</code> - Results per page (default: 20, max: 100)</li>
+                                <li><code>category</code> - Filter by category</li>
+                                <li><code>sdk</code> - Filter by SDK</li>
+                                <li><code>search</code> - Search term</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="endpoint">
+                            <h4>Get Server Details</h4>
+                            <p><code>GET /v1/servers/{id}</code></p>
+                            <p>Returns detailed information about a specific MCP server.</p>
+                        </div>
+                        
+                        <div class="endpoint">
+                            <h4>Search Servers</h4>
+                            <p><code>GET /v1/search</code></p>
+                            <p>Search for MCP servers using advanced filtering.</p>
+                            
+                            <h5>Query Parameters</h5>
+                            <ul>
+                                <li><code>q</code> - Search query</li>
+                                <li><code>filters</code> - JSON object with filter criteria</li>
+                                <li><code>sort</code> - Sort field and direction</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="endpoint premium-only">
+                            <h4>Server Analytics</h4>
+                            <p><code>GET /v1/servers/{id}/analytics</code></p>
+                            <p>Returns usage and popularity metrics for a specific server.</p>
+                            <span class="premium-tag">Professional & Enterprise</span>
+                        </div>
+                        
+                        <div class="endpoint premium-only">
+                            <h4>Bulk Server Details</h4>
+                            <p><code>POST /v1/servers/bulk</code></p>
+                            <p>Get details for multiple servers in a single request.</p>
+                            <span class="premium-tag">Professional & Enterprise</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="examples">
+                        <h3>API Examples</h3>
+                        
+                        <div class="example">
+                            <h4>List All Servers</h4>
+                            <div class="code-example">
+                                <pre><code>curl -X GET "https://api.mcphubz.com/v1/servers" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <h4>Search for Python Servers</h4>
+                            <div class="code-example">
+                                <pre><code>curl -X GET "https://api.mcphubz.com/v1/search?q=python" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <h4>Get Server Details</h4>
+                            <div class="code-example">
+                                <pre><code>curl -X GET "https://api.mcphubz.com/v1/servers/filesystem" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example">
+                            <h4>Filter by Category and SDK</h4>
+                            <div class="code-example">
+                                <pre><code>curl -X GET "https://api.mcphubz.com/v1/servers?category=data-access&sdk=typescript" \
+-H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="sdks">
+                        <h3>Client SDKs</h3>
+                        <p>We provide official client SDKs for several programming languages to make integration easier:</p>
+                        
+                        <div class="sdk-list">
+                            <div class="sdk-item">
+                                <i class="fab fa-js"></i>
+                                <h4>JavaScript/TypeScript</h4>
+                                <div class="code-example">
+                                    <pre><code>npm install mcphubz-api-client</code></pre>
+                                </div>
+                                <a href="https://github.com/mcphubz/api-client-js" class="btn btn-small" target="_blank">View on GitHub</a>
+                            </div>
+                            
+                            <div class="sdk-item">
+                                <i class="fab fa-python"></i>
+                                <h4>Python</h4>
+                                <div class="code-example">
+                                    <pre><code>pip install mcphubz-api-client</code></pre>
+                                </div>
+                                <a href="https://github.com/mcphubz/api-client-python" class="btn btn-small" target="_blank">View on GitHub</a>
+                            </div>
+                            
+                            <div class="sdk-item">
+                                <i class="fab fa-java"></i>
+                                <h4>Java</h4>
+                                <div class="code-example">
+                                    <pre><code>// Maven
+&lt;dependency&gt;
+    &lt;groupId&gt;com.mcphubz&lt;/groupId&gt;
+    &lt;artifactId&gt;api-client&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                                </div>
+                                <a href="https://github.com/mcphubz/api-client-java" class="btn btn-small" target="_blank">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="api-use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2>API Use Cases</h2>
+                <p>Discover how developers are using the MCPHubz API</p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Development Platforms</h3>
+                    <p>Integrate MCP server discovery directly into AI development platforms to help developers find and implement context management solutions.</p>
+                </div>
+                
+                <div class="use-case">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Workflow Automation</h3>
+                    <p>Automatically discover and integrate MCP servers into workflow automation systems based on specific requirements.</p>
+                </div>
+                
+                <div class="use-case">
+                    <i class="fas fa-analytics"></i>
+                    <h3>Analytics Dashboards</h3>
+                    <p>Build custom analytics dashboards to track MCP server usage and performance across your organization.</p>
+                </div>
+                
+                <div class="use-case">
+                    <i class="fas fa-tools"></i>
+                    <h3>Developer Tools</h3>
+                    <p>Create specialized developer tools that help with MCP server selection, configuration, and integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="api-support">
+        <div class="container">
+            <div class="support-content">
+                <h2>API Support</h2>
+                <p>Need help with our API? Our support team is here to assist you.</p>
+                <div class="support-options">
+                    <div class="support-option">
+                        <i class="fas fa-book"></i>
+                        <h3>Documentation</h3>
+                        <p>Comprehensive API documentation with examples and guides.</p>
+                        <a href="api-docs.html" class="btn btn-small">View Docs</a>
+                    </div>
+                    
+                    <div class="support-option">
+                        <i class="fas fa-comments"></i>
+                        <h3>Community Forum</h3>
+                        <p>Connect with other developers and share knowledge.</p>
+                        <a href="https://community.mcphubz.com" class="btn btn-small" target="_blank">Join Forum</a>
+                    </div>
+                    
+                    <div class="support-option">
+                        <i class="fas fa-headset"></i>
+                        <h3>Technical Support</h3>
+                        <p>Get direct assistance from our technical support team.</p>
+                        <a href="contact.html?department=api-support" class="btn btn-small">Contact Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest API updates and features.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>MCPHubz</h2>
+                    <p>The Model Context Protocol Authority</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Map</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="guides.html">Guides</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="consulting.html">Consulting</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io" target="_blank">Official MCP Site</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol" target="_blank">GitHub Organization</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers" target="_blank">Official Servers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCPHubz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and panes
+                    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding tab pane
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

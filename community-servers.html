@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community MCP Servers - MCPHubz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore community-developed Model Context Protocol servers from around the web, organized by category and functionality.">
+    <meta name="keywords" content="Model Context Protocol, MCP, community servers, GitHub, MCP integration, AI context">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MCPHubz</h1>
+                <p>The Model Context Protocol Authority</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="consulting.html">Consulting</a></li>
+                    <li><a href="api.html">API</a></li>
+                    <li><a href="github-servers.html">GitHub Servers</a></li>
+                    <li><a href="community-servers.html" class="active">Community Servers</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="account.html" class="btn btn-small">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>Community MCP Servers</h1>
+            <p>Explore community-developed Model Context Protocol servers from around the web</p>
+        </div>
+    </section>
+    
+    <section class="community-info">
+        <div class="container">
+            <div class="info-box warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="info-content">
+                    <h3>Community Server Notice</h3>
+                    <p>Community servers are untested and should be used at your own risk. They are not affiliated with or endorsed by Anthropic or the Model Context Protocol team.</p>
+                </div>
+            </div>
+            
+            <div class="search-filter">
+                <input type="text" id="server-search" placeholder="Search servers..." class="search-input">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Databases">Databases</button>
+                    <button class="filter-btn" data-filter="DevOps">DevOps</button>
+                    <button class="filter-btn" data-filter="Productivity">Productivity</button>
+                    <button class="filter-btn" data-filter="Web">Web</button>
+                    <button class="filter-btn" data-filter="AI">AI</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div id="community-error-container" class="error-container" style="display: none;"></div>
+    
+    <section class="community-servers">
+        <div class="container">
+            <div id="community-servers-container">
+                <!-- Community servers will be populated by JavaScript -->
+                <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading community servers...</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contribute-section">
+        <div class="container">
+            <div class="contribute-content">
+                <h2>Contribute Your MCP Server</h2>
+                <p>Have you developed an MCP server? Share it with the community and get featured on MCPHubz.</p>
+                <div class="contribute-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Develop Your Server</h3>
+                        <p>Create your MCP server using one of the official SDKs</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Publish on GitHub</h3>
+                        <p>Upload your code to a public GitHub repository</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Submit to MCPHubz</h3>
+                        <p>Submit your server for inclusion in our directory</p>
+                    </div>
+                </div>
+                <a href="submit-server.html" class="btn btn-large">Submit Your Server</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Additional Resources</h2>
+                <p>Helpful tools and resources for working with MCP servers</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-list-alt"></i>
+                    <h3>Awesome MCP Servers</h3>
+                    <p>A curated list of Model Context Protocol servers and resources</p>
+                    <a href="https://github.com/topics/model-context-protocol" class="btn" target="_blank">View List</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-terminal"></i>
+                    <h3>MCP CLI</h3>
+                    <p>Command-line inspector for testing MCP servers</p>
+                    <a href="https://github.com/modelcontextprotocol/inspector" class="btn" target="_blank">View Tool</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-download"></i>
+                    <h3>MCP Get</h3>
+                    <p>Tool for installing and managing MCP servers</p>
+                    <a href="https://github.com/modelcontextprotocol/mcp-get" class="btn" target="_blank">View Tool</a>
+                </div>
+                
+                <div class="resource-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Supergateway</h3>
+                    <p>Run MCP stdio servers over SSE</p>
+                    <a href="https://github.com/modelcontextprotocol/supergateway" class="btn" target="_blank">View Tool</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest MCP server updates and releases.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>MCPHubz</h2>
+                    <p>The Model Context Protocol Authority</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Map</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="guides.html">Guides</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="consulting.html">Consulting</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="github-servers.html">GitHub Servers</a></li>
+                        <li><a href="community-servers.html">Community Servers</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io" target="_blank">Official MCP Site</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol" target="_blank">GitHub Organization</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers" target="_blank">Official Servers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:info@mcphubz.com">info@mcphubz.com</a></li>
+                        <li><a href="mailto:support@mcphubz.com">support@mcphubz.com</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCPHubz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/community-servers.js"></script>
+    <script>
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('server-search');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterServers);
+            }
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Filter servers
+                    filterServers();
+                });
+            });
+            
+            function filterServers() {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                const serverCards = document.querySelectorAll('.server-card');
+                
+                serverCards.forEach(card => {
+                    const serverName = card.querySelector('h3').textContent.toLowerCase();
+                    const serverDescription = card.querySelector('p').textContent.toLowerCase();
+                    const serverCategory = card.closest('.server-category').querySelector('h3').textContent;
+                    
+                    const matchesSearch = serverName.includes(searchTerm) || serverDescription.includes(searchTerm);
+                    const matchesFilter = activeFilter === 'all' || serverCategory.includes(activeFilter);
+                    
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide category headers based on visible cards
+                const categories = document.querySelectorAll('.server-category');
+                categories.forEach(category => {
+                    const visibleCards = category.querySelectorAll('.server-card[style="display: block"]');
+                    if (visibleCards.length > 0) {
+                        category.style.display = 'block';
+                    } else {
+                        category.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

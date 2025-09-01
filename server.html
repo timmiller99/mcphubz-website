@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Hub - Server Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MCP Hub</h1>
+                <p>Model Context Protocol Server Directory</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="directory.html" class="active">Directory</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="server-details">
+        <div class="container">
+            <div class="server-header-details">
+                <div class="server-title">
+                    <h2 id="server-name">Server Name</h2>
+                    <div class="server-badges">
+                        <span class="badge official" id="server-status">Official</span>
+                        <span class="badge category" id="server-category">Category</span>
+                        <span class="badge sdk" id="server-sdk">SDK</span>
+                    </div>
+                </div>
+                <div class="server-stats">
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span id="server-stars">0</span>
+                        <span>Stars</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-code-branch"></i>
+                        <span id="server-forks">0</span>
+                        <span>Forks</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-history"></i>
+                        <span id="server-updated">N/A</span>
+                        <span>Updated</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="server-content">
+                <div class="server-description">
+                    <h3>Description</h3>
+                    <p id="server-description">Loading server description...</p>
+                </div>
+
+                <div class="server-capabilities">
+                    <h3>Capabilities</h3>
+                    <ul id="server-capabilities-list">
+                        <!-- Capabilities will be populated here -->
+                    </ul>
+                </div>
+
+                <div class="server-installation">
+                    <h3>Installation</h3>
+                    <div class="code-block">
+                        <pre id="server-installation-code">npm install @mcp/server-name</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('server-installation-code')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="server-configuration">
+                    <h3>Configuration</h3>
+                    <div class="code-block">
+                        <pre id="server-configuration-code">// Configuration example
+{
+  "name": "server-name",
+  "command": "npx server-name",
+  "options": {
+    "apiKey": "YOUR_API_KEY"
+  }
+}</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('server-configuration-code')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="server-usage">
+                    <h3>Usage Example</h3>
+                    <div class="code-block">
+                        <pre id="server-usage-code">// Example usage code
+// This will be populated with server-specific examples</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('server-usage-code')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="server-links">
+                <a href="#" id="github-link" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="#" id="docs-link" class="btn" target="_blank">
+                    <i class="fas fa-book"></i> Documentation
+                </a>
+                <a href="#" id="issues-link" class="btn" target="_blank">
+                    <i class="fas fa-exclamation-circle"></i> Issues
+                </a>
+            </div>
+
+            <div class="related-servers">
+                <h3>Related Servers</h3>
+                <div class="related-servers-grid" id="related-servers-list">
+                    <!-- Related servers will be populated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>MCP Hub</h2>
+                    <p>Making MCP server integration easier</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Site Map</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="guides.html">Guides</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://modelcontextprotocol.io" target="_blank">Official MCP Site</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol" target="_blank">GitHub Organization</a></li>
+                        <li><a href="https://github.com/modelcontextprotocol/servers" target="_blank">Official Servers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCP Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/server-details.js"></script>
+</body>
+</html>
