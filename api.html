@@ -149,6 +149,265 @@
                         <h3>Getting Started with MCPHubz API</h3>
                         <p>Follow these steps to start using the MCPHubz API:</p>
                         
+                        <div class="getting-started-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Sign up for an API Key</h4>
+                                    <p>Create your free account and get your API key to start making requests.</p>
+                                    <button class="btn generate-api-key">Generate Demo Key</button>
+                                    <div class="api-key-display" style="display:none;"></div>
+                                    <button class="btn btn-outline copy-api-key" style="display:none;">Copy Key</button>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Make Your First Request</h4>
+                                    <p>Use your API key to fetch the list of available MCP servers.</p>
+                                    <div class="code-block">
+                                        <pre class="code-example">curl -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     https://api.mcphubz.com/v1/servers</pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Start Building</h4>
+                                    <p>Integrate the API into your application using our SDKs or direct HTTP requests.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="authentication">
+                        <h3>Authentication</h3>
+                        <p>All API requests must include authentication using your API key.</p>
+                        
+                        <h4>API Key Authentication</h4>
+                        <p>Include your API key in the Authorization header:</p>
+                        
+                        <div class="code-block">
+                            <pre class="code-example">Authorization: Bearer YOUR_API_KEY</pre>
+                        </div>
+                        
+                        <div class="auth-info">
+                            <div class="info-box">
+                                <h5>Rate Limits</h5>
+                                <ul>
+                                    <li><strong>Free:</strong> 100 requests/day</li>
+                                    <li><strong>Pro:</strong> 10,000 requests/day</li>
+                                    <li><strong>Enterprise:</strong> Unlimited</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box">
+                                <h5>Error Codes</h5>
+                                <ul>
+                                    <li><strong>401:</strong> Invalid API key</li>
+                                    <li><strong>429:</strong> Rate limit exceeded</li>
+                                    <li><strong>403:</strong> Insufficient permissions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="endpoints">
+                        <h3>API Endpoints</h3>
+                        <p>Comprehensive list of available API endpoints:</p>
+                        
+                        <div class="endpoint-group">
+                            <h4>Servers</h4>
+                            
+                            <div class="endpoint">
+                                <div class="endpoint-header">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/v1/servers</span>
+                                    <button class="btn btn-small try-api-btn" data-endpoint="/api/v1/servers" data-method="GET">Try it</button>
+                                </div>
+                                <p>Get a list of all MCP servers</p>
+                                <div class="endpoint-params">
+                                    <h5>Query Parameters:</h5>
+                                    <ul>
+                                        <li><code>category</code> - Filter by category (optional)</li>
+                                        <li><code>sdk</code> - Filter by SDK (optional)</li>
+                                        <li><code>limit</code> - Number of results (default: 10)</li>
+                                        <li><code>page</code> - Page number (default: 1)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="endpoint">
+                                <div class="endpoint-header">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/v1/servers/search</span>
+                                    <button class="btn btn-small try-api-btn" data-endpoint="/api/v1/servers/search" data-method="GET">Try it</button>
+                                </div>
+                                <p>Search for MCP servers</p>
+                                <div class="endpoint-params">
+                                    <h5>Query Parameters:</h5>
+                                    <ul>
+                                        <li><code>q</code> - Search query (required)</li>
+                                        <li><code>category</code> - Filter by category (optional)</li>
+                                        <li><code>limit</code> - Number of results (default: 10)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="endpoint">
+                                <div class="endpoint-header">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/v1/servers/{id}</span>
+                                    <button class="btn btn-small try-api-btn" data-endpoint="/api/v1/servers/filesystem" data-method="GET">Try it</button>
+                                </div>
+                                <p>Get detailed information about a specific server</p>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint-group">
+                            <h4>Analytics</h4>
+                            
+                            <div class="endpoint">
+                                <div class="endpoint-header">
+                                    <span class="method get">GET</span>
+                                    <span class="path">/v1/analytics/popular</span>
+                                    <button class="btn btn-small try-api-btn" data-endpoint="/api/v1/analytics/popular" data-method="GET">Try it</button>
+                                </div>
+                                <p>Get popular MCP servers with download statistics</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="examples">
+                        <h3>Code Examples</h3>
+                        <p>Ready-to-use code examples in multiple programming languages:</p>
+                        
+                        <div class="example-section" id="example-servers">
+                            <h4>Fetching MCP Servers</h4>
+                            
+                            <div class="language-selector">
+                                <button class="language-btn active" data-language="javascript" onclick="switchCodeLanguage('javascript', 'example-servers')">JavaScript</button>
+                                <button class="language-btn" data-language="python" onclick="switchCodeLanguage('python', 'example-servers')">Python</button>
+                                <button class="language-btn" data-language="curl" onclick="switchCodeLanguage('curl', 'example-servers')">cURL</button>
+                            </div>
+                            
+                            <div class="code-block">
+                                <pre class="code-example" data-language="javascript">// Fetch MCP servers using JavaScript
+const response = await fetch('https://api.mcphubz.com/v1/servers', {
+    headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+    }
+});
+
+const data = await response.json();
+console.log('MCP Servers:', data.servers);</pre>
+
+                                <pre class="code-example" data-language="python" style="display:none;"># Fetch MCP servers using Python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+}
+
+response = requests.get('https://api.mcphubz.com/v1/servers', headers=headers)
+data = response.json()
+
+print(f"Found {len(data['servers'])} MCP servers")</pre>
+
+                                <pre class="code-example" data-language="curl" style="display:none;"># Fetch MCP servers using cURL
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Content-Type: application/json" \
+     https://api.mcphubz.com/v1/servers</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section" id="example-search">
+                            <h4>Searching for Servers</h4>
+                            
+                            <div class="language-selector">
+                                <button class="language-btn active" data-language="javascript" onclick="switchCodeLanguage('javascript', 'example-search')">JavaScript</button>
+                                <button class="language-btn" data-language="python" onclick="switchCodeLanguage('python', 'example-search')">Python</button>
+                            </div>
+                            
+                            <div class="code-block">
+                                <pre class="code-example" data-language="javascript">// Search for GitHub-related MCP servers
+const searchQuery = 'github';
+const response = await fetch(`https://api.mcphubz.com/v1/servers/search?q=${searchQuery}`, {
+    headers: {
+        'Authorization': 'Bearer YOUR_API_KEY'
+    }
+});
+
+const results = await response.json();
+results.servers.forEach(server => {
+    console.log(`${server.name}: ${server.description}`);
+});</pre>
+
+                                <pre class="code-example" data-language="python" style="display:none;"># Search for GitHub-related MCP servers
+import requests
+
+search_query = 'github'
+url = f'https://api.mcphubz.com/v1/servers/search?q={search_query}'
+
+response = requests.get(url, headers={'Authorization': 'Bearer YOUR_API_KEY'})
+results = response.json()
+
+for server in results['servers']:
+    print(f"{server['name']}: {server['description']}")</pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="sdks">
+                        <h3>SDKs & Libraries</h3>
+                        <p>Official and community SDKs to simplify integration:</p>
+                        
+                        <div class="sdk-grid">
+                            <div class="sdk-card">
+                                <div class="sdk-header">
+                                    <i class="fab fa-js-square"></i>
+                                    <h4>JavaScript SDK</h4>
+                                </div>
+                                <p>Official JavaScript/TypeScript SDK for Node.js and browsers</p>
+                                <div class="sdk-install">
+                                    <code>npm install @mcphubz/sdk</code>
+                                </div>
+                                <a href="https://github.com/mcphubz/javascript-sdk" class="btn btn-outline">Documentation</a>
+                            </div>
+                            
+                            <div class="sdk-card">
+                                <div class="sdk-header">
+                                    <i class="fab fa-python"></i>
+                                    <h4>Python SDK</h4>
+                                </div>
+                                <p>Official Python SDK with async support</p>
+                                <div class="sdk-install">
+                                    <code>pip install mcphubz-sdk</code>
+                                </div>
+                                <a href="https://github.com/mcphubz/python-sdk" class="btn btn-outline">Documentation</a>
+                            </div>
+                            
+                            <div class="sdk-card">
+                                <div class="sdk-header">
+                                    <i class="fab fa-golang"></i>
+                                    <h4>Go SDK</h4>
+                                </div>
+                                <p>Community-maintained Go SDK</p>
+                                <div class="sdk-install">
+                                    <code>go get github.com/mcphubz/go-sdk</code>
+                                </div>
+                                <a href="https://github.com/mcphubz/go-sdk" class="btn btn-outline">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        
                         <ol class="steps">
                             <li>
                                 <h4>Create an Account</h4>
@@ -476,5 +735,7 @@ X-RateLimit-Reset: 1616172800</code></pre>
             });
         });
     </script>
+    <script src="js/main.js"></script>
+    <script src="js/api-docs.js"></script>
 </body>
 </html>
