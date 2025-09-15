@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma migrate reset",
+    
+    "test:llm": "tsx scripts/test-llm-system.ts",
+    "test:credits": "tsx scripts/test-credit-system.ts",
+    
+    "scan:mcp": "tsx scripts/scan-mcp-servers.ts",
+    "scan:start": "pm2 start ecosystem.config.js",
+    "scan:stop": "pm2 stop all",
+    "scan:logs": "pm2 logs --nostream",
+    
+    "cache:clear": "tsx scripts/clear-cache.ts",
+    "cache:stats": "tsx scripts/cache-stats.ts"
+  },
+  "dependencies-to-add": {
+    "chalk": "^5.3.0"
+  }
+}

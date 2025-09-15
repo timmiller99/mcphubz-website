@@ -1,0 +1,318 @@
+// MCPHubz Database Schema v2 - With Credit System & Multi-LLM Support
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============= USER & AUTH =============
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  name              String?
+  githubUsername    String?  @unique
+  discordId         String?  @unique
+  slackId           String?  @unique
+  avatarUrl         String?
+  bio               String?  @db.Text
+  
+  // Account type & credits
+  tier              UserTier @default(FREE)
+  credits           Float    @default(10.0) // 10 credits at signup
+  lifetimeCredits   Float    @default(0)
+  creditResetDate   DateTime? // For monthly reset on subscriptions
+  stripeCustomerId  String?
+  
+  // Settings
+  preferredModel    LLMModel @default(OPUS_4)
+  apiUsageAlerts    Boolean  @default(true)
+  
+  // Metadata
+  role              UserRole @default(USER)
+  isVerified        Boolean  @default(false)
+  lastActivity      DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  apiUsage          ApiUsage[]
+  creditTransactions CreditTransaction[]
+  subscriptions     Subscription[]
+  mcpServers        McpServer[]
+  aiRequests        AiRequest[]
+  
+  @@index([email])
+  @@index([tier])
+  @@index([credits])
+}
+
+// ============= CREDIT SYSTEM =============
+
+model CreditTransaction {
+  id              String   @id @default(cuid())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String
+  
+  type            TransactionType
+  amount          Float    // Can be negative for usage
+  balance         Float    // Balance after transaction
+  description     String
+  metadata        Json?    // Store stripe payment ID, etc
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([userId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+model ApiUsage {
+  id              String   @id @default(cuid())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String
+  
+  model           LLMModel
+  endpoint        String   // Which API endpoint/feature
+  
+  // Token counting
+  promptTokens    Int
+  completionTokens Int
+  totalTokens     Int
+  creditsUsed     Float    // totalTokens / 10000
+  
+  // Performance
+  latencyMs       Int
+  cached          Boolean  @default(false)
+  cacheKey        String?
+  
+  // Request details
+  requestId       String   @unique
+  metadata        Json?    // Store request details
+  error           String?
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([userId])
+  @@index([model])
+  @@index([createdAt])
+  @@index([cached])
+  @@index([requestId])
+}
+
+// ============= AI REQUESTS & CACHING =============
+
+model AiRequest {
+  id              String   @id @default(cuid())
+  user            User?    @relation(fields: [userId], references: [id])
+  userId          String?
+  
+  // Request details
+  type            RequestType // MCP_ANALYSIS, CODE_GEN, CHAT, etc
+  prompt          String   @db.Text
+  promptHash      String   // For cache matching
+  
+  // Response
+  response        String?  @db.Text
+  model           LLMModel
+  tokensUsed      Int
+  creditsUsed     Float
+  
+  // Cache control
+  cached          Boolean  @default(false)
+  cacheKey        String   @unique
+  cacheTTL        Int      @default(3600) // seconds
+  cacheExpiry     DateTime?
+  
+  // Metadata
+  processingTime  Int      // milliseconds
+  error           String?
+  metadata        Json?
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([userId])
+  @@index([type])
+  @@index([promptHash])
+  @@index([cacheKey])
+  @@index([cached])
+  @@index([cacheExpiry])
+}
+
+// ============= SUBSCRIPTIONS =============
+
+model Subscription {
+  id              String   @id @default(cuid())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String
+  
+  plan            SubscriptionPlan
+  status          SubscriptionStatus @default(ACTIVE)
+  
+  // Billing
+  stripeSubscriptionId String? @unique
+  stripePriceId   String?
+  amount          Float
+  currency        String   @default("usd")
+  interval        BillingInterval @default(MONTHLY)
+  
+  // Credits
+  creditsPerMonth Float
+  rolloverCredits Boolean  @default(false)
+  
+  // Dates
+  currentPeriodStart DateTime
+  currentPeriodEnd   DateTime
+  cancelledAt     DateTime?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([status])
+  @@index([plan])
+}
+
+// ============= MCP SERVERS =============
+
+model McpServer {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  githubUrl       String   @unique
+  category        String
+  
+  // Quality metrics
+  qualityScore    Int      @default(0)
+  aiAnalysis      Json?    // Store AI analysis results
+  compatibility   Json?
+  status          ServerStatus @default(PENDING)
+  
+  // GitHub metrics
+  stars           Int      @default(0)
+  forks           Int      @default(0)
+  lastCommit      DateTime?
+  language        String?
+  topics          String[]
+  
+  // Content
+  readme          String?   @db.Text
+  features        String[]
+  installation    String?   @db.Text
+  configuration   Json?
+  
+  // Attribution
+  author          String?
+  authorUrl       String?
+  submittedBy     User?    @relation(fields: [submittedById], references: [id])
+  submittedById   String?
+  
+  // Analysis metadata
+  lastAnalyzed    DateTime?
+  analysisCost    Float?   // Credits used for analysis
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  lastScanned     DateTime @default(now())
+  
+  @@index([category])
+  @@index([qualityScore])
+  @@index([status])
+  @@index([lastScanned])
+}
+
+// ============= RATE LIMITING =============
+
+model RateLimit {
+  id              String   @id @default(cuid())
+  identifier      String   @unique // userId or IP
+  
+  endpoint        String
+  requests        Int      @default(0)
+  windowStart     DateTime @default(now())
+  windowEnd       DateTime
+  
+  blocked         Boolean  @default(false)
+  blockedUntil    DateTime?
+  
+  @@index([identifier])
+  @@index([endpoint])
+  @@index([windowEnd])
+}
+
+// ============= ENUMS =============
+
+enum UserTier {
+  FREE
+  STARTER    // $9/mo - 100 credits
+  PREMIUM    // $29/mo - 500 credits  
+  ENTERPRISE // Custom
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum LLMModel {
+  OPUS_4       // Free tier - Anthropic's older model
+  OPUS_4_1     // Premium - Latest Opus
+  CLAUDE_3_5   // Premium - Claude 3.5 Sonnet
+  GPT_4_TURBO  // Premium - OpenAI fallback
+  CACHED       // Special flag for cached responses
+}
+
+enum TransactionType {
+  SIGNUP_BONUS
+  PURCHASE
+  SUBSCRIPTION
+  USAGE
+  REFUND
+  ADMIN_GRANT
+  REFERRAL
+}
+
+enum RequestType {
+  MCP_ANALYSIS
+  CODE_GENERATION
+  CHAT
+  SEARCH
+  DOCUMENTATION
+  TUTORIAL
+  QUALITY_CHECK
+}
+
+enum SubscriptionPlan {
+  FREE
+  STARTER
+  PREMIUM
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+  PAST_DUE
+}
+
+enum BillingInterval {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum ServerStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  DEPRECATED
+  ARCHIVED
+}
