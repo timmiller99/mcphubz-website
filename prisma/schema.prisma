@@ -1,0 +1,465 @@
+// This is your Prisma schema file
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// MCP Server model
+model McpServer {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  githubUrl       String   @unique
+  category        String
+  qualityScore    Int      @default(0)
+  compatibility   Json?
+  status          ServerStatus @default(PENDING)
+  stars           Int      @default(0)
+  forks           Int      @default(0)
+  lastCommit      DateTime?
+  language        String?
+  topics          String[]
+  readme          String?   @db.Text
+  performance     Json?
+  features        String[]
+  installation    String?   @db.Text
+  configuration   Json?
+  author          String?
+  authorUrl       String?
+  license         String?
+  downloads       Int      @default(0)
+  weeklyDownloads Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  lastScanned     DateTime @default(now())
+  
+  reviews         Review[]
+  benchmarks      Benchmark[]
+  integrations    Integration[]
+  
+  @@index([category])
+  @@index([qualityScore])
+  @@index([status])
+  @@index([lastScanned])
+}
+
+// Community Member model
+model CommunityMember {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  name              String?
+  githubUsername    String?  @unique
+  discordId         String?  @unique
+  slackId           String?  @unique
+  avatarUrl         String?
+  bio               String?  @db.Text
+  skills            Json?
+  contributionLevel ContributionLevel @default(MEMBER)
+  engagementScore   Int      @default(0)
+  reputation        Int      @default(0)
+  hubspotContactId  String?
+  stripeCustomerId  String?
+  role              UserRole @default(USER)
+  isVerified        Boolean  @default(false)
+  lastActivity      DateTime @default(now())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  contributions     Contribution[]
+  reviews          Review[]
+  subscriptions    Subscription[]
+  consultations    Consultation[]
+  posts            Post[]
+  comments         Comment[]
+  
+  @@index([engagementScore])
+  @@index([contributionLevel])
+  @@index([lastActivity])
+}
+
+// Content model
+model Content {
+  id              String   @id @default(cuid())
+  title           String
+  slug            String   @unique
+  type            ContentType
+  status          ContentStatus @default(DRAFT)
+  content         String   @db.Text
+  excerpt         String?
+  featuredImage   String?
+  author          CommunityMember @relation("ContentAuthor", fields: [authorId], references: [id])
+  authorId        String
+  publishDate     DateTime?
+  platforms       Json?
+  seoTitle        String?
+  seoDescription  String?
+  seoKeywords     String[]
+  performanceMetrics Json?
+  views           Int      @default(0)
+  likes           Int      @default(0)
+  shares          Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  comments        Comment[]
+  tags            Tag[]
+  
+  @@index([slug])
+  @@index([type])
+  @@index([status])
+  @@index([publishDate])
+}
+
+// Business Pipeline model
+model BusinessPipeline {
+  id              String   @id @default(cuid())
+  contact         CommunityMember @relation("BusinessContact", fields: [contactId], references: [id])
+  contactId       String
+  stage           PipelineStage @default(LEAD)
+  value           Float    @default(0)
+  probability     Int      @default(0)
+  expectedClose   DateTime?
+  notes           String?  @db.Text
+  assignedTo      String?
+  source          String?
+  campaignId      String?
+  lastContact     DateTime?
+  nextAction      String?
+  nextActionDate  DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  activities      Activity[]
+  deals           Deal[]
+  
+  @@index([stage])
+  @@index([contactId])
+  @@index([expectedClose])
+}
+
+// Contribution model
+model Contribution {
+  id              String   @id @default(cuid())
+  member          CommunityMember @relation(fields: [memberId], references: [id])
+  memberId        String
+  type            ContributionType
+  title           String
+  description     String?  @db.Text
+  url             String?
+  impact          Int      @default(1)
+  verified        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  
+  @@index([memberId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+// Review model
+model Review {
+  id              String   @id @default(cuid())
+  server          McpServer @relation(fields: [serverId], references: [id])
+  serverId        String
+  author          CommunityMember @relation(fields: [authorId], references: [id])
+  authorId        String
+  rating          Int
+  title           String?
+  comment         String?  @db.Text
+  helpful         Int      @default(0)
+  verified        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([serverId, authorId])
+  @@index([serverId])
+  @@index([authorId])
+  @@index([rating])
+}
+
+// Benchmark model
+model Benchmark {
+  id              String   @id @default(cuid())
+  server          McpServer @relation(fields: [serverId], references: [id])
+  serverId        String
+  version         String
+  metrics         Json
+  environment     Json?
+  runDate         DateTime @default(now())
+  createdAt       DateTime @default(now())
+  
+  @@index([serverId])
+  @@index([runDate])
+}
+
+// Integration model
+model Integration {
+  id              String   @id @default(cuid())
+  server          McpServer @relation(fields: [serverId], references: [id])
+  serverId        String
+  platform        String
+  version         String?
+  status          IntegrationStatus @default(ACTIVE)
+  configuration   Json?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([serverId])
+  @@index([platform])
+  @@index([status])
+}
+
+// Subscription model
+model Subscription {
+  id              String   @id @default(cuid())
+  member          CommunityMember @relation(fields: [memberId], references: [id])
+  memberId        String
+  plan            SubscriptionPlan
+  status          SubscriptionStatus @default(ACTIVE)
+  stripeId        String?  @unique
+  startDate       DateTime @default(now())
+  endDate         DateTime?
+  cancelledAt     DateTime?
+  amount          Float
+  interval        BillingInterval @default(MONTHLY)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([memberId])
+  @@index([status])
+  @@index([plan])
+}
+
+// Consultation model
+model Consultation {
+  id              String   @id @default(cuid())
+  member          CommunityMember @relation(fields: [memberId], references: [id])
+  memberId        String
+  scheduledDate   DateTime
+  duration        Int      // in minutes
+  type            ConsultationType
+  status          ConsultationStatus @default(SCHEDULED)
+  meetingUrl      String?
+  notes           String?  @db.Text
+  recording       String?
+  followUp        String?  @db.Text
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([memberId])
+  @@index([scheduledDate])
+  @@index([status])
+}
+
+// Post model (for community forum)
+model Post {
+  id              String   @id @default(cuid())
+  author          CommunityMember @relation(fields: [authorId], references: [id])
+  authorId        String
+  title           String
+  content         String   @db.Text
+  category        String
+  tags            String[]
+  views           Int      @default(0)
+  upvotes         Int      @default(0)
+  isPinned        Boolean  @default(false)
+  isLocked        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  comments        Comment[]
+  
+  @@index([authorId])
+  @@index([category])
+  @@index([createdAt])
+}
+
+// Comment model
+model Comment {
+  id              String   @id @default(cuid())
+  content         String   @db.Text
+  author          CommunityMember @relation(fields: [authorId], references: [id])
+  authorId        String
+  post            Post?    @relation(fields: [postId], references: [id])
+  postId          String?
+  contentItem     Content? @relation(fields: [contentId], references: [id])
+  contentId       String?
+  parentComment   Comment? @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId        String?
+  upvotes         Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  replies         Comment[] @relation("CommentReplies")
+  
+  @@index([authorId])
+  @@index([postId])
+  @@index([contentId])
+  @@index([parentId])
+}
+
+// Activity model (for tracking pipeline activities)
+model Activity {
+  id              String   @id @default(cuid())
+  pipeline        BusinessPipeline @relation(fields: [pipelineId], references: [id])
+  pipelineId      String
+  type            ActivityType
+  description     String
+  outcome         String?
+  createdAt       DateTime @default(now())
+  
+  @@index([pipelineId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+// Deal model
+model Deal {
+  id              String   @id @default(cuid())
+  pipeline        BusinessPipeline @relation(fields: [pipelineId], references: [id])
+  pipelineId      String
+  name            String
+  value           Float
+  status          DealStatus @default(OPEN)
+  closedDate      DateTime?
+  wonReason       String?
+  lostReason      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([pipelineId])
+  @@index([status])
+}
+
+// Tag model
+model Tag {
+  id              String   @id @default(cuid())
+  name            String   @unique
+  slug            String   @unique
+  description     String?
+  content         Content[]
+  createdAt       DateTime @default(now())
+  
+  @@index([slug])
+}
+
+// Enums
+enum ServerStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  DEPRECATED
+  ARCHIVED
+}
+
+enum ContributionLevel {
+  MEMBER
+  CONTRIBUTOR
+  MAINTAINER
+  EXPERT
+  PARTNER
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum ContentType {
+  TUTORIAL
+  GUIDE
+  NEWS
+  CASE_STUDY
+  DOCUMENTATION
+  VIDEO
+  PODCAST
+}
+
+enum ContentStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PipelineStage {
+  LEAD
+  QUALIFIED
+  PROPOSAL
+  NEGOTIATION
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+enum ContributionType {
+  CODE
+  DOCUMENTATION
+  REVIEW
+  SUPPORT
+  CONTENT
+  MODERATION
+}
+
+enum IntegrationStatus {
+  ACTIVE
+  INACTIVE
+  ERROR
+  MAINTENANCE
+}
+
+enum SubscriptionPlan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  TRIAL
+}
+
+enum BillingInterval {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum ConsultationType {
+  DISCOVERY
+  TECHNICAL
+  IMPLEMENTATION
+  SUPPORT
+  ENTERPRISE
+}
+
+enum ConsultationStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum ActivityType {
+  EMAIL
+  CALL
+  MEETING
+  DEMO
+  PROPOSAL
+  NOTE
+}
+
+enum DealStatus {
+  OPEN
+  WON
+  LOST
+}
