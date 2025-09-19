@@ -1,0 +1,44 @@
+TIM - SUPER SIMPLE UPLOAD INSTRUCTIONS
+=======================================
+
+YOU ALREADY HAVE EVERYTHING READY!
+
+Step 1: Login to HostGator
+---------------------------
+https://portal.hostgator.com
+→ Click "cPanel"
+→ Click "File Manager"
+
+Step 2: Go to public_html folder
+---------------------------------
+Double-click "public_html"
+
+Step 3: Upload These Files
+--------------------------
+✓ about.html
+✓ api.html
+✓ community-servers.html
+✓ contact.html
+✓ directory.html
+✓ github-servers.html
+✓ guides.html
+✓ index.html (this is your homepage)
+✓ marketplace.html
+✓ resources.html
+✓ server-details.html
+✓ server.html
+
+Step 4: Upload These Folders
+-----------------------------
+✓ css/ (entire folder)
+✓ js/ (entire folder)
+
+Step 5: DONE!
+-------------
+Visit mcphubz.com - Your site is LIVE!
+
+========================================
+THAT'S IT! NO BUILD NEEDED!
+Your HTML files work perfectly on HostGator.
+The Next.js stuff is for future enhancements.
+========================================
